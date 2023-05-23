@@ -1,0 +1,13 @@
+#inp{
+  width: 75%;
+}
+#k1{
+  margin-left: 17%;
+}
+.k2{
+  margin-top: 4%;
+}
+#genbtn{
+  display: flex;
+  align-items: center;
+}

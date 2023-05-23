@@ -1,0 +1,34 @@
+@media screen and (min-width: 500px) and (max-width: 780px) {
+    .two{
+        text-align: center;
+    }
+    .three{
+        text-align: center;
+    }
+    .four{
+        text-align: center;
+    }
+}
+@media screen and (max-width: 950px){
+    .sidebar{
+        display: none;
+    }
+    .dsh{
+        display: none;
+    }
+    .vvt{
+        display: block;
+    }
+    .menu{
+        display: block;
+    }
+    .head{
+        color: white;
+    }
+    .header{
+        background-color: rgb(1,1,29);
+    }
+    .body{
+        width: 100%;
+    }
+}

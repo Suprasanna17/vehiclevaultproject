@@ -1,0 +1,181 @@
+import React from "react";
+import './App.css';
+import './Dashboard.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import './bootsrap.css';
+import { useEffect, useState } from 'react';
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+import './Flip.css';
+import axios from 'axios';
+import Home from "./Home";
+import { useLocation } from 'react-router-dom';
+import ReactCardFlip from "react-card-flip";
+function Dashboard(){
+    const location = useLocation();
+    const [two, SetTwo] = useState([]);
+    const [three, SetThree] = useState([]);
+    const [four, SetFour] = useState([]);
+    const [aec, SetAEC] = useState([]);
+    const [acet, SetACET] = useState([]);
+    const [acoe, SetACOE] = useState([]);
+    const [total, SetTotal] = useState([]);
+    const [arr1, Setarr1] = useState(0);
+    const [arr2, Setarr2] = useState(0);
+    const [arr3, Setarr3] = useState(0);
+    const [arr4, Setarr4] = useState(0);
+    const [arr5, Setarr5] = useState(0);
+    const [arr6, Setarr6] = useState(0);
+    const [arr7, Setarr7] = useState(0);
+    const [log, Setlog] = useState(false);
+    useEffect(()=>{
+        axios.get('http://localhost:5004/createUser').then((res)=> {
+          for(let i=0;i<res.data.length;i++){
+             if(res.data[i].vehicle_type==='two wheeler'){
+                 two.push(res.data[i]);
+             }
+             if(res.data[i].vehicle_type==='three wheeler'){
+                 three.push(res.data[i]);
+             }
+             if(res.data[i].vehicle_type==='four wheeler'){
+                 four.push(res.data[i]);
+             }
+             if(res.data[i].college==='AEC'){
+                aec.push(res.data[i]);
+            }
+            if(res.data[i].college==='ACET'){
+                acet.push(res.data[i]);
+            }
+            if(res.data[i].college==='ACOE'){
+                acoe.push(res.data[i]);
+            }
+            total.push(res.data[i]);
+          }
+          Setarr1(two.length/2);
+          Setarr2(three.length/2);
+          Setarr3(four.length/2);
+          Setarr4(aec.length/2);
+          Setarr5(acet.length/2);
+          Setarr6(acoe.length/2);
+          Setarr7(total.length/2);
+        })
+     },[])
+    const myRef1 = useRef(null);
+    const myRef2 = useRef(null);
+    const myRef3 = useRef(null);
+    const dropdown = () => {
+        myRef1.current.style.display = 'none';
+        myRef2.current.style.display = 'block';
+        myRef3.current.style.display = 'block';
+    };
+    const close = () => {
+        myRef1.current.style.display = 'block';
+        myRef2.current.style.display = 'none';
+        myRef3.current.style.display = 'none';
+    };
+    const logoutFunction=(e)=>{
+        Setlog(true);
+    }
+    if(log){
+        return(
+            <Home/>
+        )
+    }
+    return(
+        <>
+            <div className="div1">
+                <div className='sidebar'>
+                    <div className='sp'></div>
+                    <h3 className='link'>Vehicle Vault</h3>
+                    {/* <Link to="/profile" className="und"><p className='lk'>&nbsp;<i className="fas fa-user" style={{fontSize:'20px'}} ></i>&nbsp;&nbsp;Profile</p></Link> */}
+                    <Link to="/dashboard" className="und"><p className='lk' style={{backgroundColor:"white",color:"black"}}>&nbsp;<i className="fas fa-dashboard" style={{fontSize:'20px'}} ></i>&nbsp;&nbsp;Dashboard</p></Link>
+                    <Link to="/passes" className="und"><p className='lk'>&nbsp;<i className="fas fa-ticket" style={{fontSize:'20px'}} ></i>&nbsp;&nbsp;Passes</p></Link>
+                    <Link to="/generatepasses" className="und"><p className='lk'>&nbsp;<i class="fa fa-file-text" aria-hidden="true" style={{fontSize:'20px'}}></i>&nbsp;&nbsp;Generate Pass</p></Link>
+                    <Link to="/reports" className="und"><p className='lk'>&nbsp;<i class="fa fa-pie-chart" aria-hidden="true" style={{fontSize:'20px'}}></i>&nbsp;&nbsp;Reports</p></Link>
+                    <Link to="/profilemanagement" className="und"><p className='lk'>&nbsp;<i class="fa fa-pencil" aria-hidden="true" style={{fontSize:'20px'}}></i>&nbsp;&nbsp;Profile Management</p></Link>
+                    <div onClick={logoutFunction} className="und logout"><p className='lk'>&nbsp;<i class="fa fa-sign-out" aria-hidden="true" style={{fontSize:'20px'}}></i>&nbsp;&nbsp;Logout</p></div>
+                </div>
+                <div className='body'>
+                    <div className="header">
+                        <h3 className="head"><div className="menu" ref={myRef1} id="dd" onClick={dropdown}>☰&nbsp;&nbsp;</div><div className="vvt">Vehicle Vault</div><div className="dsh">Dashboard</div></h3>
+                        <p className="head"><div className="close" ref={myRef2} onClick={close}>✖&nbsp;&nbsp;</div></p>
+                    </div>
+                    <div ref={myRef3} className="down">
+                        <div className='scroll'>
+                        {/* <Link to="/profile" className="und"><p className='lk1'>&nbsp;<i className="fas fa-user" style={{fontSize:'20px'}} ></i>&nbsp;&nbsp;Profile</p></Link> */}
+                    <Link to="/dashboard" className="und"><p className='lk1' style={{backgroundColor:"white",color:"black"}}>&nbsp;<i className="fas fa-dashboard" style={{fontSize:'20px'}} ></i>&nbsp;&nbsp;Dashboard</p></Link>
+                    <Link to="/passes" className="und"><p className='lk1'>&nbsp;<i className="fas fa-ticket" style={{fontSize:'20px'}} ></i>&nbsp;&nbsp;Passes</p></Link>
+                    <Link to="/generatepasses" className="und"><p className='lk1'>&nbsp;<i class="fa fa-file-text" aria-hidden="true" style={{fontSize:'20px'}}></i>&nbsp;&nbsp;Generate Pass</p></Link>
+                    <Link to="/reports" className="und"><p className='lk1'>&nbsp;<i class="fa fa-pie-chart" aria-hidden="true" style={{fontSize:'20px'}}></i>&nbsp;&nbsp;Reports</p></Link>
+                    <Link to="/profilemanagement" className="und"><p className='lk1'>&nbsp;<i class="fa fa-pencil" aria-hidden="true" style={{fontSize:'20px'}}></i>&nbsp;&nbsp;Profile Management</p></Link>
+                    <div onClick={logoutFunction} className="und logout"><p className='lk1'>&nbsp;<i class="fa fa-sign-out" aria-hidden="true" style={{fontSize:'20px'}}></i>&nbsp;&nbsp;Logout</p></div>
+                        </div>
+                    </div>
+                    <div className="box">
+                        <div className="row">
+                            <div className="col-md-1"></div>
+                            <div className="col-md-10" id="box1">
+                                <h1>Overall Passes</h1>
+                                <h1>{arr7}</h1>
+                            </div>
+                            <div className="col-md-1"></div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-12 row" id="wheels">
+                            <div className="col-md-1"></div>
+                            <div className="col-md-10 row" id="box5">
+                                <div className="col-md-4">
+                                    <div id="box2">
+                                        <h2>Two Wheelers</h2>
+                                        <h2>{arr1}</h2>
+                                    </div>
+                                </div>
+                                <div className="col-md-4">
+                                    <div id="box3">
+                                        <h2>Three Wheelers</h2>
+                                        <h2>{arr2}</h2>
+                                    </div>
+                                </div>
+                                <div className="col-md-4">
+                                    <div id="box4">
+                                        <h2>Four Wheelers</h2>
+                                        <h2>{arr3}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-1"></div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-12 row" id="wheels">
+                            <div className="col-md-1"></div>
+                            <div className="col-md-10 row" id="box5">
+                                <div className="col-md-4">
+                                    <div id="box2">
+                                        <h2>AEC</h2>
+                                        <h2>{arr4}</h2>
+                                    </div>
+                                </div>
+                                <div className="col-md-4">
+                                    <div id="box3">
+                                        <h2>ACET</h2>
+                                        <h2>{arr5}</h2>
+                                    </div>
+                                </div>
+                                <div className="col-md-4">
+                                    <div id="box4">
+                                        <h2>ACOE</h2>
+                                        <h2>{arr6}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+export default Dashboard;

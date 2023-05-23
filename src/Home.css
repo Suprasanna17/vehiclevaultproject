@@ -1,0 +1,68 @@
+.ts
+{
+  text-align: center;
+  height: 100%;
+  width: 75%;
+  background-color: #edf1f29a;
+  border-radius: 25px;
+}
+.ts h1{
+  font-size: xx-large;
+  color:white;
+}
+.log{
+  height: 70%;
+  width: 75%;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  font-size: 20px;
+  border: none;
+}
+.vno{
+  height:10%;
+  width:80%;
+  font-size: larger;
+  background-color: white;
+  border: none;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 10px;
+  color:black;
+}
+.bt{
+  height: 10%;
+  width: 80%;
+  font-size: large;
+  background-color: #212134;
+  border-radius: 10px;
+  color: white;
+}
+.bt:hover{
+  background-color: rgba(255, 255, 255, 0.468);
+  color: #212134;
+  text-transform: bold;
+}
+.login{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.name{
+  font-family:Microsoft Sans Serif;
+  color: white;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.sgn{
+  display: flex;
+  justify-content: center;
+}
+.home{
+  background-image: url('../public/backg.webp');
+  height:100vh;
+  width:100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}

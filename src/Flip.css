@@ -1,0 +1,33 @@
+.two {
+  perspective: 1000px;
+  width: 200px;
+  height: 200px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.8s;
+}
+
+.two-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.two.flipped .two-front {
+  transform: rotateY(180deg);
+}
+
+.two-front,
+.two-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.two-back {
+  transform: rotateY(180deg);
+}
